@@ -1,0 +1,48 @@
+name: Semantic Release
+
+on:
+  push:
+    branches:
+      - main
+      - homolog
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.15"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.6
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Semantic Release
+        id: semantic # Define um ID para capturar outputs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm exec semantic-release
+
+      - name: Display release information
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: |
+          echo "Nova versão publicada: ${{ steps.semantic.outputs.new_release_version }}"
+          echo "Versão major: ${{ steps.semantic.outputs.new_release_major_version }}"
+          echo "Versão minor: ${{ steps.semantic.outputs.new_release_minor_version }}"
+          echo "Versão patch: ${{ steps.semantic.outputs.new_release_patch_version }}"
+
+      - name: Display message if no release was published
+        if: steps.semantic.outputs.new_release_published != 'true'
+        run: echo "Nenhuma nova versão foi publicada."
