@@ -43,27 +43,7 @@ jobs:
       - name: Run Semantic Release
         id: semantic
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }} # Token do GitHub para fazer commits e criar tags
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           # Executa o semantic-release (sem dry-run)
-          pnpm exec semantic-release
-
-          # Captura a versão (se houver)
-          VERSION=$(pnpm exec semantic-release | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+" || true)
-
-          # Define variáveis de ambiente com base na versão capturada
-          if [ -n "$VERSION" ]; then
-            echo "new_release_published=true" >> $GITHUB_ENV
-            echo "new_release_version=$VERSION" >> $GITHUB_ENV
-          else
-            echo "new_release_published=false" >> $GITHUB_ENV
-          fi
-
-      - name: Display release information
-        if: env.new_release_published == 'true'
-        run: |
-          echo "Nova versão publicada: ${{ env.new_release_version }}"
-
-      - name: Display message if no release was published
-        if: env.new_release_published != 'true'
-        run: echo "Nenhuma nova versão foi publicada."
+          npx semantic-release
