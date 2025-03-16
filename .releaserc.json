@@ -2,7 +2,7 @@
   "branches": [
     "main",
     {
-      "name": "homolog",
+      "name": "release-candidate",
       "prerelease": "rc",
       "channel": "rc"
     }
@@ -42,8 +42,7 @@
           "package.json",
           "CHANGELOG.md"
         ],
-        "message": "release: 🔖 ${nextRelease.version} \n\n${nextRelease.notes}",
-        "branch": "main"
+        "message": "release: 🔖 ${nextRelease.version} \n\n${nextRelease.notes}"
       }
     ]
   ]
