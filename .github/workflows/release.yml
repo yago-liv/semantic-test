@@ -18,12 +18,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Baixa todo o histórico de commits (necessário para o semantic-release)
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "20.15" # Use a versão do Node.js que seu projeto requer
 
@@ -35,15 +35,30 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-
       - name: Run Semantic Release
         id: semantic
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           # Executa o semantic-release (sem dry-run)
-          npx semantic-release
+          pnpm exec semantic-release
+
+          # Captura a versão (se houver)
+          VERSION=$(pnpm exec semantic-release | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+" || true)
+
+          # Define variáveis de ambiente com base na versão capturada
+          if [ -n "$VERSION" ]; then
+            echo "new_release_published=true" >> $GITHUB_ENV
+            echo "new_release_version=$VERSION" >> $GITHUB_ENV
+          else
+            echo "new_release_published=false" >> $GITHUB_ENV
+          fi
+
+      - name: Display release information
+        if: env.new_release_published == 'true'
+        run: |
+          echo "Nova versão publicada: ${{ env.new_release_version }}"
+
+      - name: Display message if no release was published
+        if: env.new_release_published != 'true'
+        run: echo "Nenhuma nova versão foi publicada."
