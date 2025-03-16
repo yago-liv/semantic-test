@@ -27,26 +27,22 @@ jobs:
           version: 9.6
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Run Semantic Release
         id: semantic
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          VERSION=$(pnpm exec semantic-release --dry-run | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+")
-          if [ -n "$VERSION" ]; then
-            echo "new_release_published=true" >> $GITHUB_ENV
-            echo "new_release_version=$VERSION" >> $GITHUB_ENV
-          else
-            echo "new_release_published=false" >> $GITHUB_ENV
-          fi
+        run: pnpm exec semantic-release
 
       - name: Display release information
-        if: env.new_release_published == 'true'
+        if: steps.semantic.outputs.new_release_published == 'true'
         run: |
-          echo "Nova versão publicada: ${{ env.new_release_version }}"
+          echo "Nova versão publicada: ${{ steps.semantic.outputs.new_release_version }}"
+          echo "Versão major: ${{ steps.semantic.outputs.new_release_major_version }}"
+          echo "Versão minor: ${{ steps.semantic.outputs.new_release_minor_version }}"
+          echo "Versão patch: ${{ steps.semantic.outputs.new_release_patch_version }}"
 
       - name: Display message if no release was published
-        if: env.new_release_published != 'true'
+        if: steps.semantic.outputs.new_release_published != 'true'
         run: echo "Nenhuma nova versão foi publicada."
