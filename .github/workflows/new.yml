@@ -1,0 +1,65 @@
+name: Semantic Release
+
+on:
+  push:
+    branches:
+      - main
+      - homolog
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permite fazer push na branch
+      pull-requests: write # Permite criar pull requests (opcional)
+      issues: write # Permite criar issues (opcional)
+    environment:
+      name: Semver
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Baixa todo o histórico de commits (necessário para o semantic-release)
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.15" # Use a versão do Node.js que seu projeto requer
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.6 # Use a versão do pnpm que seu projeto requer
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile # Instala as dependências com o lockfile congelado
+
+      - name: Run Semantic Release
+        id: semantic
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # Executa o semantic-release
+          pnpm exec semantic-release
+
+          # Captura a versão (se houver)
+          VERSION=$(pnpm exec semantic-release --dry-run | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+" || true)
+
+          # Define variáveis de ambiente com base na versão capturada
+          if [ -n "$VERSION" ]; then
+            echo "new_release_published=true" >> $GITHUB_ENV
+            echo "new_release_version=$VERSION" >> $GITHUB_ENV
+          else
+            echo "new_release_published=false" >> $GITHUB_ENV
+          fi
+
+      - name: Display release information
+        if: env.new_release_published == 'true'
+        run: |
+          echo "Nova versão publicada: ${{ env.new_release_version }}"
+
+      - name: Display message if no release was published
+        if: env.new_release_published != 'true'
+        run: echo "Nenhuma nova versão foi publicada."
