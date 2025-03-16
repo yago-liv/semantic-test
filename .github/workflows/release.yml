@@ -35,17 +35,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile # Instala as dependências com o lockfile congelado
 
-      - name: Run Semantic Release (Dry Run)
+      - name: Run Semantic Release
         id: semantic
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }} # Usa o token de autenticação do GitHub
         run: |
-          # Executa o semantic-release em modo dry-run e captura a saída
-          OUTPUT=$(pnpm exec semantic-release --dry-run)
-          echo "$OUTPUT"
+          # Executa o semantic-release
+          pnpm exec semantic-release --dry-run
 
-          # Extrai a versão da saída (se houver)
-          VERSION=$(echo "$OUTPUT" | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+")
+          # Captura a versão (se houver)
+          VERSION=$(pnpm exec semantic-release --dry-run | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+" || true)
 
           # Define variáveis de ambiente com base na versão capturada
           if [ -n "$VERSION" ]; then
