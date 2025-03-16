@@ -1,3 +1,10 @@
+# [1.25.0-homolog.1](https://github.com/yago-liv/semantic-test/compare/v1.24.1...v1.25.0-homolog.1) (2025-03-16)
+
+
+### Features
+
+* new title ([473c7a6](https://github.com/yago-liv/semantic-test/commit/473c7a6d59b6bc902d3d79e53bb09b811e874aec))
+
 ## [1.24.1](https://github.com/yago-liv/semantic-test/compare/v1.24.0...v1.24.1) (2025-03-16)
 
 
