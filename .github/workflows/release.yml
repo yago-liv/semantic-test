@@ -41,4 +41,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           # Executa o semantic-release (sem dry-run)
-          pnpm exec semantic-release
+          pnpm exec semantic-release --debug
