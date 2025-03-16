@@ -32,8 +32,10 @@ jobs:
         with:
           version: 9.6 # Use a versão do pnpm que seu projeto requer
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile # Instala as dependências com o lockfile congelado
+      - name: Clear cache and reinstall dependencies
+        run: |
+          pnpm store prune  # Limpa o cache do pnpm
+          pnpm install --frozen-lockfile  # Reinstala as dependências
 
       - name: Run Semantic Release
         id: semantic
