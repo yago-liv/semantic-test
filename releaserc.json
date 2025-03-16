@@ -30,20 +30,20 @@
     "@semantic-release/changelog",
     "@semantic-release/github",
     [
-      "@semantic-release/git",
+      "@semantic-release/npm",
+      {
+        "npmPublish": false
+      }
+    ],
+    [
       {
         "assets": [
           "package.json",
           "CHANGELOG.md"
         ],
-        "message": "release: 🔖  ${nextRelease.version} \n\n${nextRelease.notes}"
+        "message": "chore(release): 🔖  ${nextRelease.version} \n\n${nextRelease.notes}"
       }
     ],
-    [
-      "@semantic-release/npm",
-      {
-        "npmPublish": false
-      }
-    ]
+    "@semantic-release/git"
   ]
 }

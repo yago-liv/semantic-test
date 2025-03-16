@@ -45,7 +45,7 @@ jobs:
           pnpm exec semantic-release
 
           # Captura a versão (se houver)
-          VERSION=$(pnpm exec semantic-release --dry-run | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+" || true)
+          VERSION=$(pnpm exec semantic-release | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+" || true)
 
           # Define variáveis de ambiente com base na versão capturada
           if [ -n "$VERSION" ]; then
