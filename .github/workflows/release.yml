@@ -38,7 +38,7 @@ jobs:
       - name: Run Semantic Release
         id: semantic
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }} # Usa o token de autenticação do GitHub
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           # Executa o semantic-release
           pnpm exec semantic-release
