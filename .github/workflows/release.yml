@@ -41,7 +41,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }} # Usa o token de autenticação do GitHub
         run: |
           # Executa o semantic-release
-          pnpm exec semantic-release --dry-run
+          pnpm exec semantic-release
 
           # Captura a versão (se houver)
           VERSION=$(pnpm exec semantic-release --dry-run | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+" || true)
