@@ -39,6 +39,7 @@ jobs:
         id: semantic
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           # Executa o semantic-release
           pnpm exec semantic-release
