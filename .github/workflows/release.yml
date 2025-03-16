@@ -33,16 +33,26 @@ jobs:
           version: 9.6 # Use a versão do pnpm que seu projeto requer
 
       - name: Install dependencies
-        run: pnpm install # Instala as dependências com o lockfile congelado
+        run: pnpm install --frozen-lockfile # Instala as dependências com o lockfile congelado
 
       - name: Run Semantic Release
         id: semantic
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           # Executa o semantic-release
           pnpm exec semantic-release
+
+          # Captura a versão (se houver)
+          VERSION=$(pnpm exec semantic-release --dry-run | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+" || true)
+
+          # Define variáveis de ambiente com base na versão capturada
+          if [ -n "$VERSION" ]; then
+            echo "new_release_published=true" >> $GITHUB_ENV
+            echo "new_release_version=$VERSION" >> $GITHUB_ENV
+          else
+            echo "new_release_published=false" >> $GITHUB_ENV
+          fi
 
       - name: Display release information
         if: env.new_release_published == 'true'
