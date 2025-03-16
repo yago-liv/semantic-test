@@ -32,7 +32,7 @@ jobs:
       - name: Run Semantic Release
         id: semantic # Define um ID para capturar outputs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: pnpm exec semantic-release
 
       - name: Display release information
