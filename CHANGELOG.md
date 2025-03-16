@@ -1,3 +1,10 @@
+# [1.25.0-rc.2](https://github.com/yago-liv/semantic-test/compare/v1.25.0-rc.1...v1.25.0-rc.2) (2025-03-16)
+
+
+### Features
+
+* change title ([bdebe7b](https://github.com/yago-liv/semantic-test/commit/bdebe7b781e075b114309374b4b83212a0a6322e))
+
 # [1.25.0-rc.1](https://github.com/yago-liv/semantic-test/compare/v1.24.1...v1.25.0-rc.1) (2025-03-16)
 
 
