@@ -33,15 +33,19 @@ jobs:
           version: 9.6 # Use a versão do pnpm que seu projeto requer
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile # Instala as dependências com o lockfile congelado
+        run: pnpm install --frozen-lockfile
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
 
       - name: Run Semantic Release
         id: semantic
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} # Token do GitHub para fazer commits e criar tags
         run: |
-          # Executa o semantic-release
+          # Executa o semantic-release (sem dry-run)
           pnpm exec semantic-release
 
           # Captura a versão (se houver)
