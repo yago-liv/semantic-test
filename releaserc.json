@@ -38,12 +38,6 @@
         ],
         "message": "release: 🔖  ${nextRelease.version} \n\n${nextRelease.notes}"
       }
-    ],
-    [
-      "@semantic-release/npm",
-      {
-        "npmPublish": false
-      }
     ]
   ]
 }
