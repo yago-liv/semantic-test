@@ -9,10 +9,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Permite fazer push na branch
-      pull-requests: write # Permite criar pull requests (opcional)
-      issues: write # Permite criar issues (opcional)
+    environment:
+      name: Semver
 
     steps:
       - name: Checkout code
