@@ -9,6 +9,10 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permite fazer push na branch
+      pull-requests: write # Permite criar pull requests (opcional)
+      issues: write # Permite criar issues (opcional)
     environment:
       name: Semver
 
@@ -16,27 +20,34 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Baixa todo o histórico de commits (necessário para o semantic-release)
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20.15"
+          node-version: "20.15" # Use a versão do Node.js que seu projeto requer
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 9.6
+          version: 9.6 # Use a versão do pnpm que seu projeto requer
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile # Instala as dependências com o lockfile congelado
 
-      - name: Run Semantic Release
+      - name: Run Semantic Release (Dry Run)
         id: semantic
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} # Usa o token de autenticação do GitHub
         run: |
-          VERSION=$(pnpm exec semantic-release --dry-run | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+")
+          # Executa o semantic-release em modo dry-run e captura a saída
+          OUTPUT=$(pnpm exec semantic-release --dry-run)
+          echo "$OUTPUT"
+
+          # Extrai a versão da saída (se houver)
+          VERSION=$(echo "$OUTPUT" | grep -oP "Published release \K[0-9]+\.[0-9]+\.[0-9]+")
+
+          # Define variáveis de ambiente com base na versão capturada
           if [ -n "$VERSION" ]; then
             echo "new_release_published=true" >> $GITHUB_ENV
             echo "new_release_version=$VERSION" >> $GITHUB_ENV
