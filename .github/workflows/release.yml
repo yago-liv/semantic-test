@@ -32,6 +32,9 @@ jobs:
         with:
           version: 9.6 # Use a versão do pnpm que seu projeto requer
 
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile # Instala as dependências com o lockfile congelado
+
       - name: Run Semantic Release
         id: semantic
         env:
