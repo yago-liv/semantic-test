@@ -1,3 +1,12 @@
+# [1.27.0](https://github.com/yago-liv/semantic-test/compare/v1.26.0...v1.27.0) (2025-03-17)
+
+
+### Features
+
+* change title ([b640610](https://github.com/yago-liv/semantic-test/commit/b6406105e7daa57f0486097f9899acbff78e47c1))
+* main ([d79ee44](https://github.com/yago-liv/semantic-test/commit/d79ee449633601fd0bf1fcd28a1096b68388892c))
+* rc ([5243207](https://github.com/yago-liv/semantic-test/commit/5243207cf92e8e9635930005fd830f17f3ad361f))
+
 # [1.26.0](https://github.com/yago-liv/semantic-test/compare/v1.25.0...v1.26.0) (2025-03-16)
 
 ### Features
