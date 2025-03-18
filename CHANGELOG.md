@@ -1,3 +1,10 @@
+# [1.37.0](https://github.com/yago-liv/semantic-test/compare/v1.36.0...v1.37.0) (2025-03-18)
+
+
+### Features
+
+* test 2 ([01d991f](https://github.com/yago-liv/semantic-test/commit/01d991f309438512ebf66c193acc2a1246c1d89c))
+
 # [1.36.0](https://github.com/yago-liv/semantic-test/compare/v1.35.0...v1.36.0) (2025-03-18)
 
 
