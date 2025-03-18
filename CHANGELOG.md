@@ -1,3 +1,10 @@
+# [1.38.0](https://github.com/yago-liv/semantic-test/compare/v1.37.1...v1.38.0) (2025-03-18)
+
+
+### Features
+
+* ngxin ([22d8e2b](https://github.com/yago-liv/semantic-test/commit/22d8e2b54441f536e2f32c53e2832c417b003447))
+
 ## [1.37.1](https://github.com/yago-liv/semantic-test/compare/v1.37.0...v1.37.1) (2025-03-18)
 
 
