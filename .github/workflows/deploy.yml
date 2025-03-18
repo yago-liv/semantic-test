@@ -9,8 +9,9 @@ on:
 env:
   PROJECT_ID: "plataforma-liv"
   REGION: "us-central1"
-  SERVICE: "my-service"
+  SERVICE: "pl-dev-teste-yago"
   WORKLOAD_IDENTITY_PROVIDER: "projects/209650852772/locations/global/workloadIdentityPools/github-actions/providers/github-provider"
+  REPO_NAME: "yago-teste"
 
 jobs:
   deploy:
@@ -46,7 +47,7 @@ jobs:
 
       - name: "Build and Push Container"
         run: |-
-          DOCKER_TAG="$${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
+          DOCKER_TAG="$${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.SERVICE }}:${{ github.sha }}"
           docker build --tag "${DOCKER_TAG}" .
           docker push "${DOCKER_TAG}"
       - name: "Deploy to Cloud Run"
