@@ -1,3 +1,10 @@
+# [1.39.0](https://github.com/yago-liv/semantic-test/compare/v1.38.0...v1.39.0) (2025-03-18)
+
+
+### Features
+
+* new title ([8b32231](https://github.com/yago-liv/semantic-test/commit/8b32231dcee66f6f76c09e210a9743d1e7b86d88))
+
 # [1.38.0](https://github.com/yago-liv/semantic-test/compare/v1.37.1...v1.38.0) (2025-03-18)
 
 
