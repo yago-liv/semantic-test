@@ -5,6 +5,11 @@ on:
     branches:
       - main
       - release-candidate
+    paths-ignore:
+      - "package.json"
+      - "package-lock.json"
+      - "CHANGELOG.md"
+      - "pnpm-lock.yaml"
 
 jobs:
   release:
@@ -15,6 +20,7 @@ jobs:
       issues: write # Permite criar issues (opcional)
     environment:
       name: Semver
+    if: ${{ github.event.head_commit.author.name != 'github-actions[bot]' }}
 
     steps:
       - name: Checkout code
