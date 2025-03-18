@@ -8,8 +8,8 @@ on:
     paths-ignore:
       - "package.json"
       - "package-lock.json"
-      - "CHANGELOG.md"
       - "pnpm-lock.yaml"
+      - "CHANGELOG.md"
 
 jobs:
   release:
