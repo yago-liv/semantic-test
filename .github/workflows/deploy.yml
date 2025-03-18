@@ -10,7 +10,7 @@ env:
   PROJECT_ID: "plataforma-liv"
   REGION: "us-central1"
   SERVICE: "my-service"
-  WORKLOAD_IDENTITY_PROVIDER: "projects/209650852772/locations/global/workloadIdentityPools/github-actions/providers/github-provider-action"
+  WORKLOAD_IDENTITY_PROVIDER: "projects/209650852772/locations/global/workloadIdentityPools/github-actions/providers/github-provider"
 
 jobs:
   deploy:
