@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/yago-liv/semantic-test/compare/v1.28.0...v1.29.0) (2025-03-18)
+
+
+### Features
+
+* deploy ([c724ab2](https://github.com/yago-liv/semantic-test/commit/c724ab29b77f2c1824f2290de201e170090f6894))
+
 # [1.28.0](https://github.com/yago-liv/semantic-test/compare/v1.27.0...v1.28.0) (2025-03-17)
 
 
