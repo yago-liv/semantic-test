@@ -14,16 +14,14 @@ env:
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }} # Só executa se o workflow do release for sucesso
-    runs-on: ubuntu-latest
-
+    runs-on: "ubuntu-latest"
     permissions:
-      contents: read
-      id-token: write
+      contents: "read"
+      id-token: "write"
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: "actions/checkout@v4"
 
       - id: "auth"
         name: "Authenticate to Google Cloud"
@@ -32,7 +30,26 @@ jobs:
           workload_identity_provider: "${{ env.WORKLOAD_IDENTITY_PROVIDER }}"
           service_account: "github-actions@plataforma-liv.iam.gserviceaccount.com"
 
-      - name: "Test GCP Authentication"
-        run: |
-          gcloud auth list
-          gcloud projects list
+      - name: "Docker Auth"
+        uses: "docker/login-action@v3"
+        with:
+          username: "oauth2accesstoken"
+          password: "${{ steps.auth.outputs.auth_token }}"
+          registry: "${{ env.REGION }}-docker.pkg.dev"
+
+      - name: "Build and Push Container"
+        run: |-
+          DOCKER_TAG="${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
+          docker build --tag "${DOCKER_TAG}" .
+          docker push "${DOCKER_TAG}"
+
+      - name: "Deploy to Cloud Run"
+        uses: "google-github-actions/deploy-cloudrun@v2"
+        with:
+          service: "${{ env.SERVICE }}"
+          region: "${{ env.REGION }}"
+          image: "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
+
+      - name: "Show output"
+        run: |-
+          echo "Cloud Run URL: ${{ steps.deploy.outputs.url }}"
