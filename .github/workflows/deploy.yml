@@ -1,0 +1,38 @@
+name: "Build and Deploy to Cloud Run"
+
+on:
+  workflow_run:
+    workflows: ["Semantic Release"]
+    types:
+      - completed
+
+env:
+  PROJECT_ID: "plataforma-liv"
+  REGION: "us-central1"
+  SERVICE: "my-service"
+  WORKLOAD_IDENTITY_PROVIDER: "projects/209650852772/locations/global/workloadIdentityPools/github-actions/providers/github-provider-action"
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} # Só executa se o workflow do release for sucesso
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - id: "auth"
+        name: "Authenticate to Google Cloud"
+        uses: "google-github-actions/auth@v2"
+        with:
+          workload_identity_provider: "${{ env.WORKLOAD_IDENTITY_PROVIDER }}"
+          service_account: "github-actions@plataforma-liv.iam.gserviceaccount.com"
+
+      - name: "Test GCP Authentication"
+        run: |
+          gcloud auth list
+          gcloud projects list
