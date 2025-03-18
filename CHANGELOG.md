@@ -1,3 +1,10 @@
+## [1.43.1](https://github.com/yago-liv/semantic-test/compare/v1.43.0...v1.43.1) (2025-03-18)
+
+
+### Bug Fixes
+
+* release.yml ([170a97d](https://github.com/yago-liv/semantic-test/commit/170a97de830b5f1aac90e7b609280af03fedd041))
+
 # [1.43.0](https://github.com/yago-liv/semantic-test/compare/v1.42.0...v1.43.0) (2025-03-18)
 
 
