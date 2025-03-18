@@ -1,3 +1,10 @@
+# [1.43.0](https://github.com/yago-liv/semantic-test/compare/v1.42.0...v1.43.0) (2025-03-18)
+
+
+### Features
+
+* change nginx ([a7a190f](https://github.com/yago-liv/semantic-test/commit/a7a190f4c52365f2f86a07416a6090ddd254a4f5))
+
 # [1.42.0](https://github.com/yago-liv/semantic-test/compare/v1.41.0...v1.42.0) (2025-03-18)
 
 
