@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - release-candidate
+      - release-candidate/*
     paths-ignore:
       - "package.json"
       - "package-lock.json"

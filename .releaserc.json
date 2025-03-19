@@ -2,7 +2,7 @@
   "branches": [
     "main",
     {
-      "name": "release-candidate",
+      "name": "release-candidate/*",
       "prerelease": "rc",
       "channel": "rc"
     }
