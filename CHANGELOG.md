@@ -1,3 +1,12 @@
+# [1.44.0-rc.1](https://github.com/yago-liv/semantic-test/compare/v1.43.1...v1.44.0-rc.1) (2025-03-19)
+
+
+### Features
+
+* app title ([e6dbdd2](https://github.com/yago-liv/semantic-test/commit/e6dbdd235bf444bc3158e64436dbfb4f60332ec5))
+* new branch name ([cbf95c0](https://github.com/yago-liv/semantic-test/commit/cbf95c05f2b67c2f998ff007c77304ffee2f9fc5))
+* title ([2316d71](https://github.com/yago-liv/semantic-test/commit/2316d712cef07eede0fc4790b22f7749a0ee3f9f))
+
 ## [1.43.1](https://github.com/yago-liv/semantic-test/compare/v1.43.0...v1.43.1) (2025-03-18)
 
 
