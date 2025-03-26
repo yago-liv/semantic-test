@@ -1,3 +1,11 @@
+# [1.46.0](https://github.com/yago-liv/semantic-test/compare/v1.45.0...v1.46.0) (2025-03-26)
+
+
+### Features
+
+* add env ([112c0e3](https://github.com/yago-liv/semantic-test/commit/112c0e39daa074e90ca9bb8dfce4924315d43007))
+* change title ([ac7bbca](https://github.com/yago-liv/semantic-test/commit/ac7bbcab5c11a916c3c866c1d8e6bdc20dd35084))
+
 # [1.45.0](https://github.com/yago-liv/semantic-test/compare/v1.44.0...v1.45.0) (2025-03-26)
 
 
