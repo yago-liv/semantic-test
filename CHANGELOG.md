@@ -1,3 +1,15 @@
+# [1.45.0](https://github.com/yago-liv/semantic-test/compare/v1.44.0...v1.45.0) (2025-03-26)
+
+
+### Bug Fixes
+
+* rc ([9c0d4f5](https://github.com/yago-liv/semantic-test/commit/9c0d4f5e0ea303920a0b17a6b4bbe42973a4690d))
+
+
+### Features
+
+* test ([6a3f5ff](https://github.com/yago-liv/semantic-test/commit/6a3f5ff290fd5b0fd05ca5a1efcb7066af473e53))
+
 # [1.44.0](https://github.com/yago-liv/semantic-test/compare/v1.43.1...v1.44.0) (2025-03-19)
 
 
