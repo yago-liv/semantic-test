@@ -2,9 +2,17 @@
   "branches": [
     "main",
     {
+<<<<<<< Updated upstream
       "name": "release-candidate",
+=======
+      "name": "rc/*",
+>>>>>>> Stashed changes
       "prerelease": "rc",
       "channel": "rc"
+    },
+    {
+      "name": "test-*",
+      "prerelease": true
     }
   ],
   "plugins": [
