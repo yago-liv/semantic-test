@@ -18,6 +18,8 @@ jobs:
       contents: write # Permite fazer push na branch
       pull-requests: write # Permite criar pull requests (opcional)
       issues: write # Permite criar issues (opcional)
+    environment:
+      name: Semver
     if: ${{ github.event.head_commit.author.name != 'github-actions[bot]' }}
 
     steps:
