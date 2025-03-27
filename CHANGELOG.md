@@ -1,3 +1,10 @@
+# [1.48.0](https://github.com/yago-liv/semantic-test/compare/v1.47.0...v1.48.0) (2025-03-27)
+
+
+### Features
+
+* change t itle ([afe79b6](https://github.com/yago-liv/semantic-test/commit/afe79b6809a83ee1fdbcfc964f049cea9362d8f6))
+
 # [1.47.0](https://github.com/yago-liv/semantic-test/compare/v1.46.0...v1.47.0) (2025-03-27)
 
 
