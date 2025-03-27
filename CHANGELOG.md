@@ -1,3 +1,11 @@
+# [1.47.0](https://github.com/yago-liv/semantic-test/compare/v1.46.0...v1.47.0) (2025-03-27)
+
+
+### Features
+
+* change app title ([473c829](https://github.com/yago-liv/semantic-test/commit/473c829f72683b60d7103cab61a2b743e4fc688c))
+* change-title ([b27f7cc](https://github.com/yago-liv/semantic-test/commit/b27f7cce4fa803bae44c53ff208f40900c527644))
+
 # [1.46.0](https://github.com/yago-liv/semantic-test/compare/v1.45.0...v1.46.0) (2025-03-26)
 
 
