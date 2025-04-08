@@ -47,7 +47,5 @@ jobs:
         with:
           extra_plugins: |
             - "@semantic-release/exec"
-            - "@semantic-release/github"
-            - "@semantic-release/git"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
