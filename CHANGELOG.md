@@ -1,3 +1,10 @@
+## [1.49.1](https://github.com/yago-liv/semantic-test/compare/v1.49.0...v1.49.1) (2025-04-08)
+
+
+### Bug Fixes
+
+* name ([999c463](https://github.com/yago-liv/semantic-test/commit/999c46301777d82730b89e7343dd3987559957fa))
+
 # [1.49.0](https://github.com/yago-liv/semantic-test/compare/v1.48.0...v1.49.0) (2025-03-27)
 
 
