@@ -1,3 +1,10 @@
+# [1.50.0](https://github.com/yago-liv/semantic-test/compare/v1.49.1...v1.50.0) (2025-04-17)
+
+
+### Features
+
+* change node version ([deac8f3](https://github.com/yago-liv/semantic-test/commit/deac8f316524f1a2aca6ec1581b82837e84d7345))
+
 ## [1.49.1](https://github.com/yago-liv/semantic-test/compare/v1.49.0...v1.49.1) (2025-04-08)
 
 
