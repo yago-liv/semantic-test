@@ -32,12 +32,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.15" # Use a versão do Node.js que seu projeto requer
+          node-version: "22.14" # Use a versão do Node.js que seu projeto requer
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v3
         with:
-          version: 9.6 # Use a versão do pnpm que seu projeto requer
+          version: 10.6 # Use a versão do pnpm que seu projeto requer
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
